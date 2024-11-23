@@ -1,2 +1,32 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace UserGenerator
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Run();
+        }
+
+        public static void Run()
+        {
+            Console.WriteLine("Hello and welcome to the UserGenerator!/n" +
+                "How many Users would you like to geenrate?");
+            int numberOfUsers = Convert.ToInt32(Console.ReadLine());
+            GenerateUsers(numberOfUsers);
+        }
+
+        public static void GenerateUsers(int usersNumber)
+        {
+            for (int i = 0; i < usersNumber; i++)
+            { 
+                // Generate user
+            }
+        }
+    }
+}
