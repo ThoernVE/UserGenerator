@@ -18,15 +18,7 @@ namespace UserGenerator
             Console.WriteLine("Hello and welcome to the UserGenerator!/n" +
                 "How many Users would you like to geenrate?");
             int numberOfUsers = Convert.ToInt32(Console.ReadLine());
-            GenerateUsers(numberOfUsers);
-        }
-
-        public static void GenerateUsers(int usersNumber)
-        {
-            for (int i = 0; i < usersNumber; i++)
-            { 
-                // Generate user
-            }
+            RandomGenerator.GenerateUsers(numberOfUsers);
         }
     }
 }
