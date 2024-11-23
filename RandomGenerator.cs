@@ -8,13 +8,22 @@ namespace UserGenerator
 {
     internal class RandomGenerator
     {
-        Random random = new Random();
+        public static Random random = new Random();
 
         public static void GenerateUsers(int usersNumber)
         {
             for (int i = 0; i < usersNumber; i++)
             {
-                // Generate user
+                string firstName = User.firstNames[random.Next(User.firstNames.Count)];
+                string lastName = User.lastNames[random.Next(User.lastNames.Count)];
+                int birthYear = random.Next(1924, 2024);
+                int birthMonth = random.Next(1, 12);
+                int birthDay = random.Next(1, 30);
+                string address = User.addresses[random.Next(User.addresses.Count)];
+                int addressNumber = random.Next(1, 100);
+                int postalCode = User.postalCodes[random.Next(User.postalCodes.Count)];
+
+                new User(firstName, lastName, birthYear, birthMonth, birthDay, address, addressNumber, postalCode);
             }
         }
     }
