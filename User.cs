@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,6 +31,11 @@ namespace UserGenerator
             PostalCode = postalCode;
         }
 
+        public override string ToString()
+        {
+            return FirstName + " " + LastName + " " + BirthYear + "-" + BirthMonth + "-" + BirthDay + " " + Address + " " + AddressNumber + " " + PostalCode;
+        }
+
         public static List<string> firstNames = new List<string>{"James", "Mary", "Michael", "Patricia", "Robert", "Jennifer", "John", "Linda", "David",
             "Elizabeth", "William", "Barbara", "Richard", "Susan", "Joseph", "Jessica", "Thomas", "Karen", "Christopher", "Sarah", "Charles",
             "Lisa", "Daniel", "Nancy", "Matthew", "Sandra", "Anthony", "Betty", "Mark", "Ashley", "Donald", "Emily", "Steven", "Kimberly",
@@ -46,5 +53,7 @@ namespace UserGenerator
             "Fyrbåksvägen", "Parkettgatan"};
 
         public static List<int> postalCodes = new List<int> {11235, 58257, 39677, 20357, 21357, 25986, 35126, 60354, 50768, 40986, 72658, 97651, 65312, 50321, 55317};
+
+        public static List<User> users = new List<User>();
     }
 }

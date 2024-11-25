@@ -23,7 +23,9 @@ namespace UserGenerator
                 int addressNumber = random.Next(1, 100);
                 int postalCode = User.postalCodes[random.Next(User.postalCodes.Count)];
 
-                new User(firstName, lastName, birthYear, birthMonth, birthDay, address, addressNumber, postalCode);
+                User.users.Add(new User(firstName, lastName, birthYear, birthMonth, birthDay, address, addressNumber, postalCode));
+
+                
             }
         }
     }
