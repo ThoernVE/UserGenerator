@@ -71,7 +71,7 @@ namespace UserGenerator
 
         private static void ConvertJSON()
         {
-            var serializedObject = Newtonsoft.Json.JsonConvert.SerializeObject(User.users);
+            var serializedObject = Newtonsoft.Json.JsonConvert.SerializeObject(User.users, Formatting.Indented);
 
             var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var filepath = Path.Combine(path, "UserData.json");
