@@ -19,7 +19,7 @@ namespace UserGenerator
         public int AddressNumber = 0;
         public int PostalCode = 0;
 
-        public User(string firstName, string lastName, int birthYear, int birthMonth, int birthDay, string address, int addressNumber, int postalCode)
+        public User(string firstName, string lastName, int birthYear, int birthMonth, int birthDay, string address, int addressNumber, int postalCode) //concstructor to user
         {
             FirstName = firstName;
             LastName = lastName;
@@ -31,11 +31,13 @@ namespace UserGenerator
             PostalCode = postalCode;
         }
 
-        public override string ToString()
+        public override string ToString() //toString override to print data correctly
         {
             return FirstName + " " + LastName + " " + BirthYear + "-" + BirthMonth + "-" + BirthDay + " " + Address + " " + AddressNumber + " " + PostalCode;
         }
 
+        
+        //lists that contains the data that will be randomized from
         public static List<string> firstNames = new List<string>{"James", "Mary", "Michael", "Patricia", "Robert", "Jennifer", "John", "Linda", "David",
             "Elizabeth", "William", "Barbara", "Richard", "Susan", "Joseph", "Jessica", "Thomas", "Karen", "Christopher", "Sarah", "Charles",
             "Lisa", "Daniel", "Nancy", "Matthew", "Sandra", "Anthony", "Betty", "Mark", "Ashley", "Donald", "Emily", "Steven", "Kimberly",
@@ -54,6 +56,7 @@ namespace UserGenerator
 
         public static List<int> postalCodes = new List<int> {11235, 58257, 39677, 20357, 21357, 25986, 35126, 60354, 50768, 40986, 72658, 97651, 65312, 50321, 55317};
 
+        //list to be able to save tha userdata.
         public static List<User> users = new List<User>();
     }
 }

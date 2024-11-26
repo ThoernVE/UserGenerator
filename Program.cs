@@ -15,16 +15,16 @@ namespace UserGenerator
             Run();
         }
 
-        public static void Run()
+        public static void Run() //main-function that runs the program
         {
             Console.WriteLine("Hello and welcome to the UserGenerator! \n" +
                 "How many Users would you like to generate?");
-            try
+            try //try/catch to handle invalid inputs
             {
                 int numberOfUsers = Convert.ToInt32(Console.ReadLine());
-                RandomGenerator.GenerateUsers(numberOfUsers);
+                RandomGenerator.GenerateUsers(numberOfUsers); //function that generates the amount of users that the user chooses
             }
-            catch
+            catch //catch-case that reruns the function in case of an invalid input.
             {
                 Console.WriteLine("Invalid input, please try again");
                 Console.Clear();
@@ -36,7 +36,7 @@ namespace UserGenerator
             optionSwitch();
         }
 
-        private static void optionSwitch()
+        private static void optionSwitch()  //function that takes lets the user choose what they want to do with the data
         {
 
             switch (Console.ReadKey().Key)
@@ -44,6 +44,7 @@ namespace UserGenerator
 
                 case ConsoleKey.NumPad1:
                 case ConsoleKey.D1:
+                    Console.Clear();
                     Print();
                     break;
                 case ConsoleKey.NumPad2:
@@ -61,7 +62,7 @@ namespace UserGenerator
 
         }
 
-        public static void Print()
+        public static void Print() //function to print userdata
         {
             foreach (var user in User.users)
             {
@@ -69,14 +70,14 @@ namespace UserGenerator
             }
         }
 
-        private static void ConvertJSON()
+        private static void ConvertJSON() //function to convert data into a JSON-file in MyDocuments on the users local computer.
         {
-            var serializedObject = Newtonsoft.Json.JsonConvert.SerializeObject(User.users, Formatting.Indented);
+            var serializedObject = Newtonsoft.Json.JsonConvert.SerializeObject(User.users, Formatting.Indented); //converts data into a var variable thats serialized into json.
 
-            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var filepath = Path.Combine(path, "UserData.json");
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //defines where to put the json file
+            var filepath = Path.Combine(path, "UserData.json"); //defines the filepath, where to put the file and what to name the file
 
-            using (StreamWriter sw = new StreamWriter(filepath))
+            using (StreamWriter sw = new StreamWriter(filepath)) //streamwriter that writes the json-object into the file.
             {
                 sw.Write(serializedObject);
             }
