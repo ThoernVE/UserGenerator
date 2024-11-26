@@ -9,22 +9,22 @@ namespace UserGenerator
 {
     internal class RandomGenerator
     {
-        public static Random random = new Random(); //defining a random.
+        public static Random random = new Random();
 
         public static void GenerateUsers(int usersNumber) //function that generates users based on the amount that the user inputs.
         {
             for (int i = 0; i < usersNumber; i++)
             {
-                string firstName = User.firstNames[random.Next(User.firstNames.Count)];
-                string lastName = User.lastNames[random.Next(User.lastNames.Count)];
+                string firstName = firstNames[random.Next(firstNames.Count)];
+                string lastName = lastNames[random.Next(lastNames.Count)];
                 int birthYear = random.Next(1924, 2024);
                 int birthMonth = random.Next(1, 12);
                 int birthDay = DaysPerMonth(birthYear, birthMonth);
-                string address = User.addresses[random.Next(User.addresses.Count)];
+                string address = addresses[random.Next(addresses.Count)];
                 int addressNumber = random.Next(1, 100);
-                int postalCode = User.postalCodes[random.Next(User.postalCodes.Count)];
+                int postalCode = postalCodes[random.Next(postalCodes.Count)];
 
-                User.users.Add(new User(firstName, lastName, birthYear, birthMonth, birthDay, address, addressNumber, postalCode));
+                users.Add(new User(firstName, lastName, birthYear, birthMonth, birthDay, address, addressNumber, postalCode));
 
             }
         }
@@ -48,6 +48,28 @@ namespace UserGenerator
                 return random.Next(1, 30);
             }
         }
+
+        //lists that contains the data that will be randomized from
+        public static List<string> firstNames = new List<string>{"James", "Mary", "Michael", "Patricia", "Robert", "Jennifer", "John", "Linda", "David",
+            "Elizabeth", "William", "Barbara", "Richard", "Susan", "Joseph", "Jessica", "Thomas", "Karen", "Christopher", "Sarah", "Charles",
+            "Lisa", "Daniel", "Nancy", "Matthew", "Sandra", "Anthony", "Betty", "Mark", "Ashley", "Donald", "Emily", "Steven", "Kimberly",
+            "Andrew", "Margaret", "Paul", "Donna", "Joshua", "Kenneth", "Carol", "Kevin", "Amanda", "Brian", "Melissa", "Timothy", "Deborah", "Ronald", "Stephanie"};
+
+        public static List<string> lastNames = new List<string>{"Andersson", "Johansson", "Karlsson", "Nilsson", "Eriksson", "Larsson", "Olsson", "Persson",
+            "Svensson", "Gustafsson", "Pettersson", "Jonsson", "Jansson", "Hansson", "Bengtsson", "Jönsson", "Lindberg", "Jakobsson", "Magnusson",
+            "Lindström", "Olofsson", "Lindqvist", "Lindgren", "Berg", "Axelsson", "Bergström", "Lundberg", "Lind", "Lundgren", "Mattsson",
+            "Berglund", "Fredriksson", "Sandberg", "Henriksson", "Ali", "Forsberg", "Mohamed", "Sjöberg", "Wallin", "Engström", "Eklund",
+            "Danielsson", "Lundin", "Håkansson", "Björk", "Bergman", "Gunnarsson", "Wikström", "Holm" };
+
+        public static List<string> addresses = new List<string> {"Önskeringsvägen", "Villagatan", " Vidargatan", "Grönviksvägen",
+            "Ehrenstrahlsvägen", "Margaretavägen", "Narvavägen", "Viktor Rydbergsgatan", "Vikbyvägen", "Skansvägen",
+            "Önstanväg", "Doktorsvägen", "Kungsgårdsvägen", "Åsgatan", "Du Rietzvägen", "Timmerby Village", "Visborgsgatan",
+            "Fyrbåksvägen", "Parkettgatan"};
+
+        public static List<int> postalCodes = new List<int> { 11235, 58257, 39677, 20357, 21357, 25986, 35126, 60354, 50768, 40986, 72658, 97651, 65312, 50321, 55317 };
+
+        //list to be able to save tha userdata.
+        public static List<User> users = new List<User>();
 
     }
 }

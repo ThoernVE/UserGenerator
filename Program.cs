@@ -64,7 +64,7 @@ namespace UserGenerator
 
         public static void Print() //function to print userdata
         {
-            foreach (var user in User.users)
+            foreach (var user in RandomGenerator.users)
             {
                 Console.WriteLine(user);
             }
@@ -72,7 +72,7 @@ namespace UserGenerator
 
         private static void ConvertJSON() //function to convert data into a JSON-file in MyDocuments on the users local computer.
         {
-            var serializedObject = Newtonsoft.Json.JsonConvert.SerializeObject(User.users, Formatting.Indented); //converts data into a var variable thats serialized into json.
+            var serializedObject = Newtonsoft.Json.JsonConvert.SerializeObject(RandomGenerator.users, Formatting.Indented); //converts data into a var variable thats serialized into json.
 
             var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //defines where to put the json file
             var filepath = Path.Combine(path, "UserData.json"); //defines the filepath, where to put the file and what to name the file
