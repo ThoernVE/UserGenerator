@@ -26,27 +26,28 @@ namespace UserGenerator
 
                 User.users.Add(new User(firstName, lastName, birthYear, birthMonth, birthDay, address, addressNumber, postalCode));
 
-                static int DaysPerMonth(int birthYear, int birthMonth)
-                {
-                    if (birthYear % 4 == 0 && birthMonth == 2) //if/else statements to account for different amount of days per months aswell as leap year.
-                    {
-                        return random.Next(1, 29);
-                    }
-                    else if (birthMonth == 2)
-                    {
-                        return  random.Next(1, 28);
-                    }
-                    else if (birthMonth == 1 || birthMonth == 3 || birthMonth == 5 || birthMonth == 7 || birthMonth == 8 || birthMonth == 10 || birthMonth == 12)
-                    {
-                        return  random.Next(1, 31);
-                    }
-                    else
-                    {
-                        return  random.Next(1, 30);
-                    }
-                }
             }
-
         }
+
+        static int DaysPerMonth(int birthYear, int birthMonth)
+        {
+            if (birthYear % 4 == 0 && birthMonth == 2) //if/else statements to account for different amount of days per months aswell as leap year.
+            {
+                return random.Next(1, 29);
+            }
+            else if (birthMonth == 2)
+            {
+                return random.Next(1, 28);
+            }
+            else if (birthMonth == 1 || birthMonth == 3 || birthMonth == 5 || birthMonth == 7 || birthMonth == 8 || birthMonth == 10 || birthMonth == 12)
+            {
+                return random.Next(1, 31);
+            }
+            else
+            {
+                return random.Next(1, 30);
+            }
+        }
+
     }
 }
