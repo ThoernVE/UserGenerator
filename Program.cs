@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace UserGenerator
 {
@@ -32,11 +33,12 @@ namespace UserGenerator
             }
             Console.WriteLine("What would you like to do with the data? Please type the correspondning number to choose\n" +
                 "1. Print\n" +
-                "2. Convert to JSON");
-            optionSwitch();
+                "2. Convert to JSON\n" +
+                "3. Add Users to Database");
+            OptionSwitch();
         }
 
-        private static void optionSwitch()  //function that takes lets the user choose what they want to do with the data
+        private static void OptionSwitch()  //function that takes lets the user choose what they want to do with the data
         {
 
             switch (Console.ReadKey().Key)
@@ -50,6 +52,10 @@ namespace UserGenerator
                 case ConsoleKey.NumPad2:
                 case ConsoleKey.D2:
                     ConvertJSON();
+                    break;
+                case ConsoleKey.NumPad3:
+                case ConsoleKey.D3:
+                    AddToDataBase();
                     break;
                 default:
                     Console.WriteLine("\nThat input was not possible. Press any button to try again");
@@ -83,6 +89,18 @@ namespace UserGenerator
             }
 
             Console.WriteLine("\nYour data has been placed in: 'MyDocuments', under the filename 'UserData.json'");
+        }
+
+        public static void AddToDataBase()
+        {
+
+            using var dbContext = new AppDbContext();
+            foreach (var user in RandomGenerator.users)
+            {
+                dbContext.Users.Add(user);
+                dbContext.SaveChanges();
+                Console.WriteLine("User saved successfully!");
+            }
         }
     }
 }
